@@ -1,23 +1,21 @@
-== Welcome to Coming Soon Overflow!
+Welcome to Coming Soon Overflow!
+=
 
 We are making a site that people can vote for upcoming movie trailors that we want to show on our site. Users can log in and vote once for a movie they'd like to see or not like to see with an upvote or down vote.
 
-They can also watch movie trailers right on the site. 
+They can also watch movie trailers right on the site.
 
-- Users can create new account
-- Users can log in
-- Users can logout
+- ~~Users can create new account~~
+- ~~Users can log in~~
+- ~~Users can logout~~
 - Users can create a poster
 - Users can vote up or down on a post
 - User can create a post with a title
 - Visitor can only view the index page, but cannot create posts or vote
 - Users can sign in via Google
 - User can only vote once on a post
-
 - Post will have an upvote or downvote
 - Post will use title to search for trailer using YouTube or iTunes API
 - API callback will provide an image_url for movie poster, synopsis, release date and link to trailer
 - Post can be displayed by popularity (upvotes + downvotes) or release date of film
-
 - Index Page displays the posts sorted by popularity or release date
-- 
