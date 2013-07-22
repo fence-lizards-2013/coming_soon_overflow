@@ -14,7 +14,6 @@ class PostsController < ApplicationController
 	end
 
 	def create #post
-
     clips = HTTParty.get(params[:clips_url] + "?apikey=" + RT_API_KEY)
     unless clips['clips'].empty?
       trailer_url = clips['clips'].first['links']['alternate']

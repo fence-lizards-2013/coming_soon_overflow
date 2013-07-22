@@ -1,30 +1,25 @@
 $(document).ready(function() {
 
-  function fillFields(movieData) {
-    var hidden_fields = $(document).find('.hidden');
-    hidden_fields.find('#title').val(movieData.title);
-    hidden_fields.find('#image_url').val(movieData.imageUrl);
-    hidden_fields.find('#clips_url').val(movieData.clipsUrl);
-    hidden_fields.find('#release_date').val(movieData.releaseDate);
-    hidden_fields.find('#critics_score').val(movieData.criticsScore);
-    hidden_fields.find('#critics_rating').val(movieData.criticsRating);
-    hidden_fields.find('#audience_score').val(movieData.audienceScore);
+  $('.submit-movie').on('submit', function(e) {
+    e.preventDefault();
+    var $movie = $('.movie.clicked');
+    movieData = {
+      title: $movie.find('.title').text().trim(),
+      image_url: $movie.find('img').attr('src'),
+      release_date: $movie.find('.release_date').text().trim(),
+      clips_url: $movie.find('.clips_url').text().trim(),
+      critics_rating: $movie.find('.critics_rating').text().trim(),
+      critics_score: $movie.find('.critics_score').text().trim(),
+      audience_score: $movie.find('.audience_score').text().trim()
+    };
+    $.post($(this).attr('action'), movieData, function(response) {
+      $('.movie').removeClass('clicked');
+      window.location = '/';
+    });
+  });
 
-  }
   $('#movie-list').on('click', '.movie', function(e){
     $('.movie').removeClass('clicked');
     $(this).addClass('clicked');
-    // $(this).toggleClass('clicked');
-    movieData = {
-      title: $(this).find('.title').text().trim(),
-      imageUrl: $(this).find('img').attr('src'),
-      releaseDate: $(this).find('.release_date').text().trim(),
-      clipsUrl: $(this).find('.clips_url').text().trim(),
-      criticsRating: $(this).find('.critics_rating').text().trim(),
-      criticsScore: $(this).find('.critics_score').text().trim(),
-      audienceScore: $(this).find('.audience_score').text().trim()
-
-    };
-    fillFields(movieData);
   });
 });
