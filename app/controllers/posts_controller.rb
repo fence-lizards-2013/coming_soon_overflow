@@ -66,7 +66,7 @@ class PostsController < ApplicationController
   def destroy 
     post = Post.find params[:id]
     post.destroy
-    redirect_to get_request_path
+    redirect_to request.referer
   end
 
 
