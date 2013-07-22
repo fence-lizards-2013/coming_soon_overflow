@@ -8,7 +8,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string 		:critics_rating
       t.integer 	:critics_score
       t.integer 	:audience_score
-      t.belongs_to :user
+      t.belongs_to :user # TODO-JW: this migration is earlier than your users migration, which is weird
     end
 
   end
