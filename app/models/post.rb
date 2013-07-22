@@ -6,6 +6,18 @@ class Post < ActiveRecord::Base
   validates :title, uniqueness: true
 
 
+  def self.sort_by_release_date(posts)
+    posts.sort_by do |post|
+      post.release_date
+    end.reverse
+  end
+
+  def self.sort_by_popularity(posts)
+    posts.sort_by do |post|
+      post.votes.where(value: -1).count - post.votes.where(value: 1).count
+    end
+  end
+
   def self.find_tomato name
     rotten_results = RottenTomatoes::RottenMovie.find(:title => name, :limit => 5)
   end

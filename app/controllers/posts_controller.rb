@@ -1,17 +1,11 @@
 class PostsController < ApplicationController
   
 	def index
-    # @posts = []
-    # Post.find_each do |post|
-    #   unless post.release_date.nil? ## this is just here because seeds don't have release_dates
-    #     if Date.today < (post.release_date + 21)
-    #       @posts << post
-    #     end
-    #   end
-    # end
-    @posts = Post.all
-    @posts.sort_by do |post|
-      post.votes.where(value: -1).count - post.votes.where(value: 1).count
+    posts = Post.where("release_date > ?", 3.weeks.ago)
+    if params[:sort] == "release_date"
+      @posts = Post.sort_by_release_date(posts)
+    else
+      @posts = Post.sort_by_popularity(posts)
     end
 	end
 
@@ -25,6 +19,10 @@ class PostsController < ApplicationController
     unless clips['clips'].empty?
       trailer_url = clips['clips'].first['links']['alternate']
     else
+      # TODO-JW: (UX feedback) Perhaps create a "no trailer found" view that
+      # has a link that the user can click on that will take them to
+      # trailers.apple.com to browse rather than sending them there without
+      # warning.
       trailer_url = 'http://www.apple.com/trailers'
     end
 
@@ -40,20 +38,6 @@ class PostsController < ApplicationController
 
 	end
 
-
-	def sort_popularity
-    @posts = Post.all.sort_by do |post|
-      post.votes.where(value: -1).count - post.votes.where(value: 1).count
-    end
-    render :index
-	end
-
-  def sort_release_date
-
-    @posts = Post.order("release_date DESC")
-    render :index
-  end
-
   def show
   end
 
@@ -68,6 +52,5 @@ class PostsController < ApplicationController
     post.destroy
     redirect_to request.referer
   end
-
 
 end
