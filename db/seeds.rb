@@ -69,7 +69,7 @@ movie_titles = [ ['Pacific Rim', 'Monsters University', 'World War Z'],
 5.times do |i|
   user = User.new(email: Faker::Internet.email, password: 'password', password_confirmation: 'password')
   3.times do |j|
-    puts "i: #{i}, j: #{j}"
+    #puts "i: #{i}, j: #{j}"
     user.posts << create_movie_post(movie_titles[i][j])
     user.save
   end
