@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include RottenTomatoes
-  RT_API_KEY = "q2zm55s22pkmfxehb4ae6sak"
 
   protect_from_forgery
   before_filter :authenticate_user!, except: [:index, :new]
