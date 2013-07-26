@@ -6,12 +6,14 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'bcrypt-ruby'
+# gem 'bcrypt-ruby'
 gem 'debugger'
 gem 'devise'
 gem 'faker'
 gem 'rottentomatoes'
 gem 'httparty'
+
+gem 'ruby-tmdb'
 
 # Gems used only for assets and not required
 # in production environments by default.
