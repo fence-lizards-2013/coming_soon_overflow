@@ -1,11 +1,14 @@
 class ApplicationController < ActionController::Base
   include RottenTomatoes
+  # TODO-JW: externalize this! Use an ENV variable or something else.
   RT_API_KEY = "q2zm55s22pkmfxehb4ae6sak"
 
   protect_from_forgery
   before_filter :authenticate_user!, except: [:index, :new]
   # helper_method :my_helper_method # makes methods available to views
   
+  # TODO-JW: This is only used in one place (posts_controller), so I wonder why
+  # this is here rather than there?
   def get_upcoming_movies
     @movies = params[:movies]
 
@@ -17,12 +20,5 @@ class ApplicationController < ActionController::Base
       attr['release_dates']['theater'] = ok_dates.to_formatted_s(:long_ordinal)
     end
   end
-
-  def get_request_path
-    request_path = request.headers['HTTP_REFERER']
-    request_path.slice! (request.headers['HTTP_ORIGIN'])
-    request_path
-  end
-
 
 end

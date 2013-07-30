@@ -1,8 +1,8 @@
 
 <div class="sort">
-<%= button_to "Sort By Popularity", posts_sort_pop_path, :method => "get", :class => 'pure-button pure-button-primary' %>
-<br>
-<%= button_to "Sort By Release Date", posts_sort_date_path, :method => "get", :class => 'pure-button pure-button-primary' %>
+<%= link_to "Sort By Popularity", posts_path(:sort => :popularity), :method => "get", :class => 'pure-button pure-button-primary' %>
+<p>
+<%= link_to "Sort By Release Date", posts_path(:sort => :release_date), :method => "get", :class => 'pure-button pure-button-primary'  %>
 </div>
 
 

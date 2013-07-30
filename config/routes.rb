@@ -4,8 +4,6 @@ ComingSoonOverflow::Application.routes.draw do
 
   get '/movie_search' => 'posts#movie_search', as: 'movie_search'
   root to: "posts#index"
-  get '/posts/popularity' => 'posts#sort_popularity', :as => 'posts_sort_pop'
-  get '/posts/release_date' => 'posts#sort_release_date', :as => 'posts_sort_date'
   resources :users, only: [:show]
 
   # post '/posts/:post_id/user_vote' => 'votes#create_profile_vote', :as => 'votes_profile'
