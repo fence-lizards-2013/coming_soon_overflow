@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  validates_presence_of :password_confirmation
+  validates :password_confirmation, :presence => true
 
   def avatar
     "http://www.gravatar.com/avatar/" + Digest::MD5.hexdigest(self.email) + "?s=200"

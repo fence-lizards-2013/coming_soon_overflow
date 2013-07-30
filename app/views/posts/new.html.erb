@@ -7,20 +7,7 @@
   <% end %>
 </div>
 
-<%= form_tag posts_url, method: 'post' do %>
-  <div class='hidden'>
-    <%= hidden_field_tag :title %>
-    <%= hidden_field_tag :image_url %>
-    <%= hidden_field_tag :clips_url %>
-    <%= hidden_field_tag :release_date %>
-    <%= hidden_field_tag :critics_score %>
-    <%= hidden_field_tag :critics_rating %>
-    <%= hidden_field_tag :audience_score %>
-    <%= hidden_field_tag :user_id, current_user.id %>
-  </div>
-  <div class="submit-movie"><%= submit_tag "Submit Movie", class: "pure-button pure-button-primary" %>
-  </div>
-<% end %>
+<%= button_to "Submit Movie", { :action => :create }, { :class => 'pure-button pure-button-primary', :form_class => 'submit-movie' } %>
 
 <div id="movie-list">
   <% if @movies %>
