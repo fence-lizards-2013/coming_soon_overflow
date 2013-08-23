@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include RottenTomatoes
   # TODO-JW: externalize this! Use an ENV variable or something else.
-  RT_API_KEY = "q2zm55s22pkmfxehb4ae6sak"
+  RT_API_KEY = "xh77z657kggvq5p974gv7zgy"
 
   protect_from_forgery
   before_filter :authenticate_user!, except: [:index, :new]
